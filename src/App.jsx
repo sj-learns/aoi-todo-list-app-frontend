@@ -98,7 +98,7 @@ const App = () => {
     localStorage.setItem('user', JSON.stringify(userData));
 
     try {
-      await fetch(`${import.meta.env.API_URL}/api/auth/categories`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/auth/categories`, {
         method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify({ categories: customCats })
@@ -119,7 +119,7 @@ const App = () => {
 
     const fetchTasks = async () => {
       try {
-        const response = await fetch(`${import.meta.env.API_URL}/api/tasks`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks`, {
           headers: {
             'Authorization': `Bearer ${token}` 
           }
@@ -156,7 +156,7 @@ const App = () => {
     if (!newTaskText.trim()) return;
 
     try {
-      const response = await fetch(`${import.meta.env.API_URL}/api/tasks`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks`, {
         method: 'POST',
         headers: getAuthHeaders(),
         body: JSON.stringify({ 
@@ -182,7 +182,7 @@ const App = () => {
     ));
 
     try {
-      await fetch(`${import.meta.env.API_URL}/api/tasks/${taskId}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${taskId}`, {
         method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify({ isDone: !currentStatus })
@@ -197,7 +197,7 @@ const App = () => {
     setTasks(tasks.filter(task => task._id !== taskId));
 
     try {
-      await fetch(`${import.meta.env.API_URL}/api/tasks/${taskId}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${taskId}`, {
         method: 'DELETE',
         headers: getAuthHeaders()
       });
